@@ -1,8 +1,15 @@
 import React from 'react';
+import classes from './Profile.module.css';
+import MyPost from "./MyPosts/MyPost";
+import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 
-const Profile = () => {
+const Profile = ({posts,addPost, newPostText, updateNewPostText}) => {
     return (
-        <div className='content'>5</div>
+        <div className={classes.content}>
+            <ProfileInfo/>
+            <MyPost posts={posts} addPost={addPost} newPostText={newPostText} updateNewPostText={updateNewPostText}/>
+        </div>
+
     )
 };
 

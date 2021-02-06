@@ -4,19 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import state, {addPost, updateNewPostText} from "./redux/store";
+import store from "./redux/store";
 
-export const rerender = (state) => {
+export const rerender = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+                <App state={store.getState()}
+                     dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 };
-rerender(state);
+rerender(store.getState());
 
+
+store.subscribe(rerender);
 
 reportWebVitals();
